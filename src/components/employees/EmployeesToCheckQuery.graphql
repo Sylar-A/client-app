@@ -1,0 +1,31 @@
+query EmployeesToCheckQuery(
+	$order: [EmployeeSortInput!]
+	$skip: Int
+	$take: Int
+	$where: EmployeeFilterInput
+) {
+	employees(order: $order, skip: $skip, take: $take, where: $where) {
+		items {
+			id
+			firstName
+			lastName
+			patronymic
+			city {
+				name
+			}
+			telegramPrivateChatId
+			internalId
+			phoneNumbers {
+				number
+			}
+			active
+			blocked
+			privateChatStarted
+		}
+		pageInfo {
+			hasNextPage
+			hasPreviousPage
+		}
+		totalCount
+	}
+}

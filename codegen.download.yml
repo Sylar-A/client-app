@@ -1,0 +1,8 @@
+schema:
+    - "${APOLLO_SERVER_URL}"
+generates:
+    ./schema.graphql:
+        plugins:
+            - schema-ast
+        config:
+            includeDirectives: false

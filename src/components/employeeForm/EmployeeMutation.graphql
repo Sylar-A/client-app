@@ -1,0 +1,5 @@
+mutation EmployeeMutation($createEmployeeInput: CreateEmployeeInput!) {
+	createOrUpdateEmployee(input: $createEmployeeInput) {
+		errorMessage
+	}
+}

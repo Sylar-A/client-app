@@ -1,0 +1,13 @@
+{
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-standard-scss",
+		"stylelint-config-prettier-scss"
+	],
+	"rules": {
+		"declaration-no-important": true,
+		"color-no-invalid-hex": true,
+		"max-empty-lines": 1,
+		"no-extra-semicolons": true
+	}
+}

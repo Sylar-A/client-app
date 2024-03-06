@@ -1,0 +1,62 @@
+query EmployeesQuery(
+	$order: [EmployeeSortInput!]
+	$skip: Int
+	$take: Int
+	$where: EmployeeFilterInput
+) {
+	employees(order: $order, skip: $skip, take: $take, where: $where) {
+		items {
+			id
+			active
+			blocked
+			privateChatStarted
+			firstName
+			lastName
+			patronymic
+			age
+			city {
+				id
+				name
+			}
+			telegramPrivateChatId
+			internalId
+			comment
+			ratingComment
+			ratings {
+				id
+				confidenceLevel
+				punctualityLevel
+				workQualityLevel
+			}
+			groupNumber
+			confirmationLevel
+			phoneNumbers {
+				id
+				number
+			}
+			sourceType
+			personalCar
+			yearOfTruckIssue
+			post
+			district
+			robokassaAccountType
+			passport {
+				id
+				country
+				series
+				number
+				source
+				date
+				divisionCode
+			}
+			joinedDate
+			birthDate
+			password
+		}
+		pageInfo {
+			hasNextPage
+			hasPreviousPage
+		}
+		totalCount
+	}
+}

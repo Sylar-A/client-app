@@ -1,0 +1,8 @@
+.dockerignore
+.git
+.gitignore
+.next
+.idea
+next-env.d.ts
+node_modules
+README.md

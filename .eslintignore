@@ -1,0 +1,6 @@
+public/
+**/node_modules/*
+**/.next/*
+*.config.js
+src/types.ts
+src/**/types.ts
