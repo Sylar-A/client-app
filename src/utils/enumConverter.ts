@@ -170,7 +170,7 @@ function ConvertFromEmployeeConfirmationLevel(
 			result = "Не подтвержден";
 			break;
 		case EmployeeConfirmationLevel.DocumentsConfirmed:
-			result = "Подтвердил документы";
+			result = "Принял условия бота";
 			break;
 		case EmployeeConfirmationLevel.ConfirmedByHrManager:
 			result = "Подтвержден менеджером по персоналу";
@@ -192,7 +192,7 @@ function ConvertToEmployeeConfirmationLevel(
 		case "Не подтвержден":
 			result = EmployeeConfirmationLevel.None;
 			break;
-		case "Подтвердил документы":
+		case "Принял условия бота":
 			result = EmployeeConfirmationLevel.DocumentsConfirmed;
 			break;
 		case "Подтвержден менеджером по персоналу":
