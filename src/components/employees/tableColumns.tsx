@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import moment from "moment";
 import { ColumnDef } from "@tanstack/react-table";
@@ -126,6 +124,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Город",
 		accessorFn: (row) => row.city && row.city.name,
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -137,6 +136,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Должность",
 		accessorFn: (row) => ConvertFromEmployeePost(row.post),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -146,8 +146,76 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		),
 	},
 	{
+		id: "Дата добавления",
+		accessorFn: (row) =>
+			row.joinedDate && moment(row.joinedDate).format("DD.MM.YYYY"),
+		cell: info => info.getValue(),
+		header: ({ column }) => (
+			<DataTableColumnHeader
+				column={column}
+				title="Дата добавления"
+				searchInput={<SearchInput column={column} />}
+			/>
+		),
+	},
+	{
+		id: "ID Телеграм",
+		accessorFn: (row) =>
+			row.telegramPrivateChatId && row.telegramPrivateChatId.toString(),
+		cell: info => info.getValue(),
+		header: ({ column }) => (
+			<DataTableColumnHeader
+				column={column}
+				title="ID Телеграм"
+				searchInput={<SearchInput column={column} />}
+			/>
+		),
+	},
+	{
+		id: "Внутренний ID",
+		accessorKey: "internalId",
+		cell: info => info.getValue(),
+		header: ({ column }) => (
+			<DataTableColumnHeader
+				column={column}
+				title="Внутренний ID"
+				searchInput={<SearchInput column={column} />}
+			/>
+		),
+	},
+	{
+		id: "Группа (Рейтинг)",
+		accessorFn: (row) =>
+			row.groupNumber && ConvertFromEmployeeRating(row.groupNumber),
+		cell: info => info.getValue(),
+		header: ({ column }) => (
+			<DataTableColumnHeader
+				column={column}
+				title="Группа (Рейтинг)"
+				searchInput={<SearchInput column={column} />}
+			/>
+		),
+	},
+	{
+		id: "Личный рейтинг",
+		accessorFn: (row) =>
+			row.ratings &&
+			`${ConvertFromEmployeeRating(row.ratings.confidenceLevel)}
+			/${ConvertFromEmployeeRating(row.ratings.punctualityLevel)}
+			/${ConvertFromEmployeeRating(row.ratings.workQualityLevel)}`,
+		cell: info => info.getValue(),
+		header: ({ column }) => (
+			<DataTableColumnHeader
+				column={column}
+				title="Личный рейтинг"
+				searchInput={<SearchInput column={column} />}
+			/>
+		),
+	},
+	{
 		id: "Фамилия",
 		accessorKey: "lastName",
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -159,6 +227,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Имя",
 		accessorKey: "firstName",
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -170,6 +239,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Отчество",
 		accessorKey: "patronymic",
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -183,6 +253,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.phoneNumbers &&
 			row.phoneNumbers.map((value) => value.number).join(", "),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -192,58 +263,9 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		),
 	},
 	{
-		id: "Внутренний ID",
-		accessorKey: "internalId",
-		header: ({ column }) => (
-			<DataTableColumnHeader
-				column={column}
-				title="Внутренний ID"
-				searchInput={<SearchInput column={column} />}
-			/>
-		),
-	},
-	{
-		id: "ID Телеграм",
-		accessorFn: (row) => row.telegramPrivateChatId,
-		header: ({ column }) => (
-			<DataTableColumnHeader
-				column={column}
-				title="ID Телеграм"
-				searchInput={<SearchInput column={column} />}
-			/>
-		),
-		cell: ({ row }) => {
-			return row.getValue("ID Телеграм") as string;
-		},
-	},
-	{
-		id: "Группа (Рейтинг)",
-		accessorFn: (row) =>
-			row.groupNumber && ConvertFromEmployeeRating(row.groupNumber),
-		header: ({ column }) => (
-			<DataTableColumnHeader
-				column={column}
-				title="Группа (Рейтинг)"
-				searchInput={<SearchInput column={column} />}
-			/>
-		),
-	},
-	{
-		id: "Личный рейтинг",
-		accessorFn: (row) =>
-			row.ratings &&
-			`${ConvertFromEmployeeRating(row.ratings.confidenceLevel)}/${ConvertFromEmployeeRating(row.ratings.punctualityLevel)}/${ConvertFromEmployeeRating(row.ratings.workQualityLevel)}`,
-		header: ({ column }) => (
-			<DataTableColumnHeader
-				column={column}
-				title="Личный рейтинг"
-				searchInput={<SearchInput column={column} />}
-			/>
-		),
-	},
-	{
 		id: "Активен",
 		accessorFn: (row) => (row.active ? "Да" : "Нет"),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -255,6 +277,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Заблокирован",
 		accessorFn: (row) => (row.blocked ? "Да" : "Нет"),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -266,6 +289,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Начал чат с ботом",
 		accessorFn: (row) => (row.privateChatStarted ? "Да" : "Нет"),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -278,6 +302,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Уровень подтверждения",
 		accessorFn: (row) =>
 			ConvertFromEmployeeConfirmationLevel(row.confirmationLevel),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -289,6 +314,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Комментарий к личному рейтингу",
 		accessorKey: "ratingComment",
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -300,6 +326,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Комментарий",
 		accessorKey: "comment",
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -309,20 +336,9 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		),
 	},
 	{
-		id: "Дата добавления",
-		accessorFn: (row) =>
-			row.joinedDate && moment(row.joinedDate).format("DD.MM.YYYY"),
-		header: ({ column }) => (
-			<DataTableColumnHeader
-				column={column}
-				title="Дата добавления"
-				searchInput={<SearchInput column={column} />}
-			/>
-		),
-	},
-	{
 		id: "Район проживания",
 		accessorKey: "district",
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -334,6 +350,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Возраст",
 		accessorKey: "age",
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -346,6 +363,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Дата рождения",
 		accessorFn: (row) =>
 			row.birthDate && moment(row.birthDate).format("DD.MM.YYYY"),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -358,6 +376,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Способ привлечения",
 		accessorFn: (row) =>
 			row.sourceType && ConvertFromEmployeeSourceType(row.sourceType),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -369,6 +388,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Наличие личного авто",
 		accessorFn: (row) => (row.personalCar ? "Да" : "Нет"),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -380,6 +400,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Год выпуска авто",
 		accessorKey: "yearOfTruckIssue",
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -390,7 +411,8 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	},
 	{
 		id: "Паспорт",
-		accessorFn: (row) => row.passport && row.passport.country,
+		accessorFn: (row) => (row.passport && row.passport.country),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -401,7 +423,9 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	},
 	{
 		id: "Серия паспорта",
-		accessorFn: (row) => row.passport && row.passport.series,
+		accessorFn: (row) =>
+			row.passport && row.passport.series && row.passport.series.toString(),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -412,7 +436,9 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	},
 	{
 		id: "Номер паспорта",
-		accessorFn: (row) => row.passport && row.passport.number,
+		accessorFn: (row) =>
+			row.passport && row.passport.number && row.passport.number.toString(),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -424,6 +450,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Кем выдан",
 		accessorFn: (row) => row.passport && row.passport.source,
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -436,6 +463,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Дата выдачи",
 		accessorFn: (row) =>
 			row.passport && moment(row.passport.date).format("DD.MM.YYYY"),
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -447,6 +475,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 	{
 		id: "Код подразделения",
 		accessorFn: (row) => row.passport && row.passport.divisionCode,
+		cell: info => info.getValue(),
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
