@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactNode, useState } from "react";
 import moment from "moment";
 import { now } from "moment/moment";
@@ -131,7 +129,7 @@ export default function EmployeeForm({
 	trigger,
 }: EmployeeFormProps) {
 	const [createEmployeeMutation] = useEmployeeMutation();
-	const [open, setOpen] = useState(false);
+	//const [open, setOpen] = useState(false);
 
 	if (!employee) {
 		employee = {
@@ -312,8 +310,6 @@ export default function EmployeeForm({
 						),
 					});
 				} else {
-					form.reset();
-
 					const isNewEmployee = !employee?.id;
 
 					toast({
@@ -753,16 +749,12 @@ export default function EmployeeForm({
 												<Textarea
 													className="h-64"
 													key="ratingComment"
-													defaultValue={
-														employee?.ratingComment ||
-														""
-													}
 													disabled={isReadOnly}
 													{...field}
 													value={
-														field.value as
-															| string
-															| undefined
+														field.value as | string | undefined
+														|| employee?.ratingComment
+														|| ""
 													}
 												/>
 											</FormControl>
@@ -853,15 +845,12 @@ export default function EmployeeForm({
 												<Textarea
 													className="h-64"
 													key="comment"
-													defaultValue={
-														employee?.comment || ""
-													}
 													disabled={isReadOnly}
 													{...field}
 													value={
-														field.value as
-															| string
-															| undefined
+														field.value as | string | undefined
+														|| employee?.comment
+														|| ""
 													}
 												/>
 											</FormControl>
