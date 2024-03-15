@@ -55,6 +55,7 @@ export function DataTableViewOptions<TData>({
 								onCheckedChange={(value) =>
 									column.toggleVisibility(value)
 								}
+								onSelect={event => event.preventDefault()}
 							>
 								{column.id}
 							</DropdownMenuCheckboxItem>
