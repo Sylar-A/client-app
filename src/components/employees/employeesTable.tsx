@@ -29,6 +29,7 @@ import { Button } from "ui/button";
 import { ClearFiltersButton } from "ui/table/clearFiltersButton";
 import { DebouncedInput } from "ui/table/debouncedInput";
 import { Filter } from "ui/table/filter";
+import { toast } from "ui/use-toast";
 import { TableColumns } from "components/employees/tableColumns";
 import useEmployeesSuspenseQuery from "./useEmployeesSuspenseQuery";
 import { FakeAny } from "common/types/FakeAny";
@@ -88,13 +89,20 @@ export function EmployeesTable<TData, TValue>() {
 	async function handleRefresh(
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 	) {
-		debugger;
-		event.preventDefault();
-
 		const refetch = await query.refetch();
 		const employees = (refetch?.data as FakeAny).employees;
 
 		data = employees.items;
+
+		toast({
+			title: "Обновление данных:",
+			variant: "success",
+			description: (
+				<div>
+					{"Данные успешно обновлены!"}
+				</div>
+			)
+		});
 	}
 
 	return (
