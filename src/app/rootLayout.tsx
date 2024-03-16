@@ -9,7 +9,7 @@ import { Providers } from "components/auth/providers";
 import { Toaster } from "ui/toaster";
 import "styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (

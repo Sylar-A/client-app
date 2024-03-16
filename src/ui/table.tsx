@@ -95,7 +95,7 @@ const TableHead = React.forwardRef<
 	<th
 		ref={ref}
 		className={cn(
-			"border-2 h-14 px-4 text-center align-middle font-medium text-zinc-500 bg-zinc-100 dark:bg-black " +
+			"border-2 h-14 text-center align-middle font-medium text-zinc-500 bg-zinc-100 dark:bg-black " +
 				"[&:has([role=checkbox])]:pr-0 dark:text-zinc-400 dark:border dark:border-zinc-500",
 			className,
 		)}
@@ -126,7 +126,7 @@ const TableCaption = React.forwardRef<
 	<caption
 		ref={ref}
 		className={cn(
-			"mt-4 mb-4 text-xl text-zinc-500 dark:text-zinc-400",
+			"mt-2 mb-2 text-xl text-zinc-500 dark:text-zinc-400",
 			className,
 		)}
 		{...props}

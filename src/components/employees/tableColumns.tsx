@@ -61,7 +61,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		enableGlobalFilter: false,
 		enableSorting: false,
 		header: () => (
-			<Button variant="ghost" className="p-2 h-[4.5rem] -m-3">
+			<Button variant="ghost" className="shadow-none p-1 h-[4.5rem]">
 				Действия
 			</Button>
 		),

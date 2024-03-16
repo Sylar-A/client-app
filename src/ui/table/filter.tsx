@@ -8,8 +8,7 @@ export function Filter({ column }: { column: Column<any, unknown> }) {
 				type="text"
 				value={(column.getFilterValue() ?? "") as string | number}
 				onChange={(value) => column.setFilterValue(value)}
-				placeholder="Поиск..."
-				className="w-fit -mx-3.5 -mb-1.5"
+				className="bg-search dark:bg-white-search focus:bg-none bg-no-repeat bg-center px-1.5 h-8"
 			/>
 		</div>
 	);

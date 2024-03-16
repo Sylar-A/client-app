@@ -39,9 +39,7 @@ export function EmployeesTable<TData, TValue>() {
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 	const [globalFilter, setGlobalFilter] = useState("");
-	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
-		{},
-	);
+	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = useState({});
 
 	/*const [pagination, setPagination] = useState({ take: 10, skip: 0 });
@@ -86,9 +84,7 @@ export function EmployeesTable<TData, TValue>() {
 		columnResizeMode: "onChange",
 	});
 
-	async function handleRefresh(
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-	) {
+	async function handleRefresh() {
 		const refetch = await query.refetch();
 		const employees = (refetch?.data as FakeAny).employees;
 
@@ -131,7 +127,7 @@ export function EmployeesTable<TData, TValue>() {
 					<DataTableViewOptions table={table} />
 				</div>
 			</div>
-			<div className="container rounded-md border w-full h-fit shadow-2xl dark:shadow-white">
+			<div className="rounded-md border w-full h-fit shadow-2xl dark:shadow-white">
 				<Table>
 					<TableCaption className="text-left ml-[52rem] font-bold">
 						Данные о сотрудниках
