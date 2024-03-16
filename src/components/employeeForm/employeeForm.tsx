@@ -56,7 +56,7 @@ import {
 	GetRobokassaAccountTypes,
 	GetYesNo,
 } from "utils/enumKeyValues";
-import { useEmployeeMutation } from "./__generated__/CreateEmployeeMutation";
+import { useEmployeeMutation } from "./__generated__/EmployeeMutation";
 import { YesNo } from "types/types";
 
 interface EmployeeFormProps {
