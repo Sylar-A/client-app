@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode } from "react";
+import React, { HTMLAttributes } from "react";
 import { ClearOutlined } from "@ant-design/icons";
 import {
 	ArrowDownIcon,
@@ -21,7 +21,6 @@ interface DataTableColumnHeaderProps<TData, TValue>
 	extends HTMLAttributes<HTMLDivElement> {
 	column: Column<TData, TValue>;
 	title: string;
-	searchInput: ReactNode;
 }
 
 export function DataTableColumnHeader<TData, TValue>({

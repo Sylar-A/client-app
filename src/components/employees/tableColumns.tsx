@@ -5,7 +5,6 @@ import { MoreHorizontal } from "lucide-react";
 import { Button } from "ui/button";
 import { Checkbox } from "ui/checkbox";
 import { DataTableColumnHeader } from "ui/table/columnHeader";
-import { SearchInput } from "ui/table/searchInput";
 import {
 	ConvertFromEmployeeConfirmationLevel,
 	ConvertFromEmployeePost,
@@ -129,7 +128,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Город"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -141,7 +139,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Должность"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -154,7 +151,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Дата добавления"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -167,7 +163,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="ID Телеграм"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -179,7 +174,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Внутренний ID"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -192,7 +186,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Группа (Рейтинг)"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -208,7 +201,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Личный рейтинг"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -220,7 +212,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Фамилия"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -232,7 +223,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Имя"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -244,7 +234,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Отчество"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -258,7 +247,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Номер телефона"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -270,7 +258,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Активен"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -282,7 +269,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Заблокирован"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -294,7 +280,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Начал чат с ботом"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -307,7 +292,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Уровень подтверждения"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -319,7 +303,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Комментарий к личному рейтингу"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -331,7 +314,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Комментарий"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -343,7 +325,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Район проживания"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -355,7 +336,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Возраст"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -368,7 +348,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Дата рождения"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -381,7 +360,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Способ привлечения"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -393,7 +371,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Наличие личного авто"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -405,7 +382,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Год выпуска авто"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -417,7 +393,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Паспорт"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -430,7 +405,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Серия паспорта"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -443,7 +417,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Номер паспорта"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -455,7 +428,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Кем выдан"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -468,7 +440,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Дата выдачи"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
@@ -480,7 +451,6 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			<DataTableColumnHeader
 				column={column}
 				title="Код подразделения"
-				searchInput={<SearchInput column={column} />}
 			/>
 		),
 	},
