@@ -28,10 +28,10 @@ const Table = React.forwardRef<
 	HTMLTableElement,
 	React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-	<div className="relative w-full overflow-auto">
+	<div className="overflow-auto">
 		<table
 			ref={ref}
-			className={cn("w-full caption-top text-sm border", className)}
+			className={cn("caption-top text-sm border", className)}
 			{...props}
 		/>
 	</div>
@@ -95,7 +95,7 @@ const TableHead = React.forwardRef<
 	<th
 		ref={ref}
 		className={cn(
-			"border-2 h-14 text-center align-middle font-medium text-zinc-500 bg-zinc-100 dark:bg-black " +
+			"relative border-2 h-14 text-center align-middle font-medium text-zinc-500 bg-zinc-100 dark:bg-black " +
 				"[&:has([role=checkbox])]:pr-0 dark:text-zinc-400 dark:border dark:border-zinc-500",
 			className,
 		)}

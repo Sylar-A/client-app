@@ -82,6 +82,9 @@ export function EmployeesTable<TData, TValue>() {
 		getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		columnResizeMode: "onChange",
+		defaultColumn: {
+			enableResizing: true,
+		},
 	});
 
 	async function handleRefresh() {
@@ -127,50 +130,45 @@ export function EmployeesTable<TData, TValue>() {
 					<DataTableViewOptions table={table} />
 				</div>
 			</div>
-			<div className="rounded-md border w-full h-fit shadow-2xl dark:shadow-white">
-				<Table>
+			<div className="rounded-md border shadow-2xl dark:shadow-white max-h-[45rem] overflow-x-hidden">
+				<Table {...{
+					style: {
+						width: table.getCenterTotalSize()
+					}
+				}}>
 					<TableCaption className="text-left ml-[52rem] font-bold">
 						Данные о сотрудниках
 					</TableCaption>
-					<TableHeader className="justify-center h-20">
+					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<TableRow key={headerGroup.id}>
-								{headerGroup.headers.map((header) => {
-									return (
-										<TableHead
-											key={header.id}
-											colSpan={header.colSpan}
-										>
-											{header.isPlaceholder ? null : (
-												<div
-													className="space-y-2"
-													onMouseDown={header.getResizeHandler()}
-													onTouchStart={header.getResizeHandler()}
-												>
-													{flexRender(
-														header.column.columnDef
-															.header,
-														header.getContext(),
-													)}
-													{header.column.getCanFilter() ? (
-														<Filter
-															column={
-																header.column
-															}
-														/>
-													) : null}
-													{/*header.column.getIsResizing() ? ( // TODO: не работает измение ширины
-                                                        <div
-                                                            className="absolute opacity-0 top-0 right-0 h-[100%] w-5
-                                                                bg-red-500 cursor-col-resize select-none touch-none
-                                                                hover:opacity-100"
-                                                        />
-                                                    ) : null*/}
-												</div>
-											)}
-										</TableHead>
-									);
-								})}
+								{headerGroup.headers.map((header) => (
+									<TableHead
+										key={header.id}
+										colSpan={header.colSpan}
+									>
+										{flexRender(
+											header.column.columnDef.header,
+											header.getContext()
+										)}
+										{header.column.getCanFilter()
+											? <Filter column={header.column}/>
+											: null
+										}
+										{<div {...{
+											onDoubleClick: () => header.column.resetSize(),
+											onMouseDown: header.getResizeHandler(),
+											onTouchStart: header.getResizeHandler(),
+											className: `absolute top-0 right-0 h-[100%] w-1 cursor-col-resize 
+												select-none touch-none ${table.options.columnResizeDirection}`,
+											style: {
+												transform: header.column.getIsResizing()
+													? `translateX(${table.getState().columnSizingInfo.deltaOffset}px)`
+													: "",
+											}
+										}}/>}
+									</TableHead>
+								))}
 							</TableRow>
 						))}
 					</TableHeader>
@@ -184,7 +182,10 @@ export function EmployeesTable<TData, TValue>() {
 									}
 								>
 									{row.getVisibleCells().map((cell) => (
-										<TableCell key={cell.id}>
+										<TableCell
+											key={cell.id}
+											style={{ width: cell.column.getSize() }}
+										>
 											{flexRender(
 												cell.column.columnDef.cell,
 												cell.getContext(),
@@ -208,7 +209,7 @@ export function EmployeesTable<TData, TValue>() {
 					</TableBody>
 				</Table>
 			</div>
-			<DataTablePagination table={table} />
+			<DataTablePagination table={table}/>
 		</div>
 	);
 }

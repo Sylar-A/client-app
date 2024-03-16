@@ -30,12 +30,13 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		enableColumnFilter: false,
 		enableGlobalFilter: false,
 		enableSorting: false,
+		size: 10,
 		header: ({ table }) => (
 			<Checkbox
 				className="mx-2"
 				checked={
-					table.getIsAllPageRowsSelected() ||
-					(table.getIsSomePageRowsSelected() && "indeterminate")
+					table.getIsAllPageRowsSelected()
+					|| (table.getIsSomePageRowsSelected() && "indeterminate")
 				}
 				onCheckedChange={(value) =>
 					table.toggleAllPageRowsSelected(!!value)
@@ -59,8 +60,9 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		enableColumnFilter: false,
 		enableGlobalFilter: false,
 		enableSorting: false,
+		size: 10,
 		header: () => (
-			<Button variant="ghost" className="shadow-none p-1 h-[4.5rem]">
+			<Button variant="ghost" className="shadow-none p-1 h-[5rem]">
 				Действия
 			</Button>
 		),
@@ -124,6 +126,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Город",
 		accessorFn: (row) => row.city && row.city.name,
 		cell: info => info.getValue(),
+		size: 75,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -135,6 +138,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Должность",
 		accessorFn: (row) => ConvertFromEmployeePost(row.post),
 		cell: info => info.getValue(),
+		size: 110,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -147,6 +151,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.joinedDate && moment(row.joinedDate).format("DD.MM.YYYY"),
 		cell: info => info.getValue(),
+		size: 130,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -159,6 +164,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.telegramPrivateChatId && row.telegramPrivateChatId.toString(),
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -170,6 +176,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Внутренний ID",
 		accessorKey: "internalId",
 		cell: info => info.getValue(),
+		size: 110,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -182,6 +189,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.groupNumber && ConvertFromEmployeeRating(row.groupNumber),
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -197,6 +205,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			/${ConvertFromEmployeeRating(row.ratings.punctualityLevel)}
 			/${ConvertFromEmployeeRating(row.ratings.workQualityLevel)}`,
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -208,6 +217,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Фамилия",
 		accessorKey: "lastName",
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -219,6 +229,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Имя",
 		accessorKey: "firstName",
 		cell: info => info.getValue(),
+		size: 80,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -230,6 +241,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Отчество",
 		accessorKey: "patronymic",
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -243,6 +255,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 			row.phoneNumbers &&
 			row.phoneNumbers.map((value) => value.number).join(", "),
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -254,6 +267,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Активен",
 		accessorFn: (row) => (row.active ? "Да" : "Нет"),
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -265,6 +279,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Заблокирован",
 		accessorFn: (row) => (row.blocked ? "Да" : "Нет"),
 		cell: info => info.getValue(),
+		size: 130,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -276,6 +291,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Начал чат с ботом",
 		accessorFn: (row) => (row.privateChatStarted ? "Да" : "Нет"),
 		cell: info => info.getValue(),
+		size: 130,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -288,6 +304,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			ConvertFromEmployeeConfirmationLevel(row.confirmationLevel),
 		cell: info => info.getValue(),
+		size: 150,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -299,6 +316,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Комментарий к личному рейтингу",
 		accessorKey: "ratingComment",
 		cell: info => info.getValue(),
+		size: 400,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -310,6 +328,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Комментарий",
 		accessorKey: "comment",
 		cell: info => info.getValue(),
+		size: 400,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -321,6 +340,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Район проживания",
 		accessorKey: "district",
 		cell: info => info.getValue(),
+		size: 120,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -332,6 +352,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Возраст",
 		accessorKey: "age",
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -344,6 +365,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.birthDate && moment(row.birthDate).format("DD.MM.YYYY"),
 		cell: info => info.getValue(),
+		size: 120,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -356,6 +378,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.sourceType && ConvertFromEmployeeSourceType(row.sourceType),
 		cell: info => info.getValue(),
+		size: 120,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -367,6 +390,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Наличие личного авто",
 		accessorFn: (row) => (row.personalCar ? "Да" : "Нет"),
 		cell: info => info.getValue(),
+		size: 150,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -378,6 +402,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Год выпуска авто",
 		accessorKey: "yearOfTruckIssue",
 		cell: info => info.getValue(),
+		size: 140,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -389,6 +414,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Паспорт",
 		accessorFn: (row) => (row.passport && row.passport.country),
 		cell: info => info.getValue(),
+		size: 100,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -401,6 +427,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.passport && row.passport.series && row.passport.series.toString(),
 		cell: info => info.getValue(),
+		size: 120,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -413,6 +440,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.passport && row.passport.number && row.passport.number.toString(),
 		cell: info => info.getValue(),
+		size: 120,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -424,6 +452,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Кем выдан",
 		accessorFn: (row) => row.passport && row.passport.source,
 		cell: info => info.getValue(),
+		size: 400,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -436,6 +465,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		accessorFn: (row) =>
 			row.passport && moment(row.passport.date).format("DD.MM.YYYY"),
 		cell: info => info.getValue(),
+		size: 150,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
@@ -447,6 +477,7 @@ export const TableColumns: ColumnDef<Employee>[] = [
 		id: "Код подразделения",
 		accessorFn: (row) => row.passport && row.passport.divisionCode,
 		cell: info => info.getValue(),
+		size: 150,
 		header: ({ column }) => (
 			<DataTableColumnHeader
 				column={column}
