@@ -8,7 +8,7 @@ export function Filter({ column }: { column: Column<any, unknown> }) {
 				type="text"
 				value={(column.getFilterValue() ?? "") as string | number}
 				onChange={(value) => column.setFilterValue(value)}
-				className="bg-search dark:bg-white-search focus:bg-none bg-no-repeat bg-center px-1.5 h-8"
+				className="bg-search dark:bg-white-search focus:bg-none bg-no-repeat bg-center h-6"
 			/>
 		</div>
 	);

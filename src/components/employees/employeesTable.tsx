@@ -106,7 +106,7 @@ export function EmployeesTable<TData, TValue>() {
 
 	return (
 		<div className="px-2">
-			<div className="relative w-full flex flex-1 items-center justify-between space-x-2 py-3">
+			<div className="relative w-full flex flex-1 items-center justify-between space-x-2 py-2">
 				<EmployeeForm
 					isReadOnly={false}
 					trigger={
@@ -130,7 +130,7 @@ export function EmployeesTable<TData, TValue>() {
 					<DataTableViewOptions table={table} />
 				</div>
 			</div>
-			<div className="rounded-md border shadow-2xl dark:shadow-white max-h-[45rem] overflow-x-hidden">
+			<div className="rounded-md border shadow-2xl dark:shadow-white max-h-[80vh] overflow-x-hidden scrollbar">
 				<Table {...{
 					style: {
 						width: table.getCenterTotalSize()
@@ -147,26 +147,28 @@ export function EmployeesTable<TData, TValue>() {
 										key={header.id}
 										colSpan={header.colSpan}
 									>
-										{flexRender(
-											header.column.columnDef.header,
-											header.getContext()
-										)}
-										{header.column.getCanFilter()
-											? <Filter column={header.column}/>
-											: null
-										}
-										{<div {...{
-											onDoubleClick: () => header.column.resetSize(),
-											onMouseDown: header.getResizeHandler(),
-											onTouchStart: header.getResizeHandler(),
-											className: `absolute top-0 right-0 h-[100%] w-1 cursor-col-resize 
-												select-none touch-none ${table.options.columnResizeDirection}`,
-											style: {
-												transform: header.column.getIsResizing()
-													? `translateX(${table.getState().columnSizingInfo.deltaOffset}px)`
-													: "",
+										<div className="flex flex-col justify-between">
+											{flexRender(
+												header.column.columnDef.header,
+												header.getContext()
+											)}
+											{header.column.getCanFilter()
+												? <Filter column={header.column}/>
+												: null
 											}
-										}}/>}
+											{<div {...{
+												onDoubleClick: () => header.column.resetSize(),
+												onMouseDown: header.getResizeHandler(),
+												onTouchStart: header.getResizeHandler(),
+												className: `absolute top-0 right-0 h-[100%] w-1 cursor-col-resize 
+													select-none touch-none ${table.options.columnResizeDirection}`,
+												style: {
+													transform: header.column.getIsResizing()
+														? `translateX(${table.getState().columnSizingInfo.deltaOffset}px)`
+														: "",
+												}
+											}}/>}
+										</div>
 									</TableHead>
 								))}
 							</TableRow>

@@ -81,3 +81,30 @@
 			"calt" 1;
 	}
 }
+
+@layer utilities {
+	.scrollbar::-webkit-scrollbar {
+		width: 0.75rem;
+		height: 0.75rem;
+	}
+
+	.scrollbar::-webkit-scrollbar-track {
+		border-radius: 1rem;
+		background: white;
+	}
+
+	.scrollbar::-webkit-scrollbar-track {
+		border-radius: 1rem;
+		background: white;
+	}
+
+	.scrollbar::-webkit-scrollbar-thumb {
+		background: lightgrey;
+		border-radius: 1rem;
+		border: 0.15rem solid slategrey;
+	}
+
+	.scrollbar::-webkit-scrollbar-thumb:hover {
+		background: slategrey;
+	}
+}

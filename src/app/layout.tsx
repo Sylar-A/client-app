@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import "styles/globals.css";
 import RootLayout from "./rootLayout";
 
 export const metadata: Metadata = {

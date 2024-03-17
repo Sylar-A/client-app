@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="ru">
-			<body className={inter.className}>
+			<body className={`${inter.className} scrollbar`}>
 				<Providers>
 					<ApolloWrapper>
 						<ThemeProvider
