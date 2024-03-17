@@ -41,9 +41,11 @@ const EmployeeFormDateInput = React.forwardRef<
 			</PopoverTrigger>
 			<PopoverContent align="center">
 				<Calendar
+					mode="single"
 					selected={props.value}
 					onDayClick={props.onChange}
 					disabled={disabled}
+					initialFocus={true}
 					locale={ru}
 				/>
 			</PopoverContent>
