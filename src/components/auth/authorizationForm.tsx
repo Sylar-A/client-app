@@ -78,7 +78,7 @@ export default function AuthorizationForm({ header }: AuthorizationFormProps) {
 	return (
 		<div
 			className="w-96 p-4 border border-zinc-200 rounded-2xl space-y-4 mx-auto my-[8%]
-            overscroll-y-auto shadow dark:shadow-white"
+            overscroll-y-auto shadow dark:shadow-white scrollbar"
 		>
 			<div className="text-center border-b-4 pb-2 mx-4">{header}</div>
 			<Form {...form}>

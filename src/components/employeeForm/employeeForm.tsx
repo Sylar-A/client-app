@@ -345,7 +345,8 @@ export default function EmployeeForm({
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="pr-2 xs:max-h-[25rem] sm:max-h-[30rem] lg:max-h-[38rem] xl:max-h-[45rem] overflow-y-auto"
+					className="pr-2 xs:max-h-[25rem] sm:max-h-[30rem] lg:max-h-[38rem] xl:max-h-[45rem]
+						overflow-y-auto scrollbar"
 				>
 					<Accordion
 						className="grid grid-cols-5 gap-3 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3

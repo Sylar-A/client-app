@@ -36,7 +36,7 @@ export function DataTableViewOptions<TData>({
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				align="center"
-				className="w-[187px] max-h-96 overflow-auto"
+				className="w-[187px] max-h-96 overflow-auto scrollbar"
 			>
 				<DropdownMenuLabel>Видимость колонок</DropdownMenuLabel>
 				<DropdownMenuSeparator />
