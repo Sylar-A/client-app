@@ -30,7 +30,7 @@ import { ClearFiltersButton } from "ui/table/clearFiltersButton";
 import { DebouncedInput } from "ui/table/debouncedInput";
 import { Filter } from "ui/table/filter";
 import { toast } from "ui/use-toast";
-import { TableColumns } from "components/employees/tableColumns";
+import TableColumns from "components/employees/tableColumns";
 import useEmployeesSuspenseQuery from "./useEmployeesSuspenseQuery";
 import { FakeAny } from "common/types/FakeAny";
 import EmployeeForm from "../employeeForm/employeeForm";
@@ -54,7 +54,7 @@ export function EmployeesTable<TData, TValue>() {
 
 	const employees = (query?.data as FakeAny).employees;
 	let data = employees.items;
-	const columns = TableColumns as ColumnDef<TData, TValue>[];
+	const columns = TableColumns({ onAfterSubmit: handleRefresh}) as ColumnDef<TData, TValue>[];
 
 	/*useEffect(() => {
         setTotalCount(employees.totalCount);
@@ -109,6 +109,7 @@ export function EmployeesTable<TData, TValue>() {
 			<div className="relative w-full flex flex-1 items-center justify-between space-x-2 py-2">
 				<EmployeeForm
 					isReadOnly={false}
+					onAfterSubmit={handleRefresh}
 					trigger={
 						<Button type="button" variant="outline">
 							<UserRoundPlusIcon className="w-5 h-5" />
@@ -130,11 +131,13 @@ export function EmployeesTable<TData, TValue>() {
 					<DataTableViewOptions table={table} />
 				</div>
 			</div>
-			<Table {...{
-				style: {
-					width: table.getCenterTotalSize()
-				}
-			}}>
+			<Table
+				{...{
+					style: {
+						width: table.getCenterTotalSize()
+					}
+				}}
+			>
 				<TableCaption>Данные о сотрудниках</TableCaption>
 				<TableHeader>
 					{table.getHeaderGroups().map((headerGroup) => (

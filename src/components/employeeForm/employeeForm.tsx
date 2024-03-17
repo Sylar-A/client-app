@@ -63,6 +63,7 @@ interface EmployeeFormProps {
 	isReadOnly: boolean;
 	employee?: Employee | undefined;
 	trigger: ReactNode;
+	onAfterSubmit: () => void
 }
 
 const formSchema = z.object({
@@ -127,6 +128,7 @@ export default function EmployeeForm({
 	isReadOnly,
 	employee,
 	trigger,
+	onAfterSubmit
 }: EmployeeFormProps) {
 	const [createEmployeeMutation] = useEmployeeMutation();
 	//const [open, setOpen] = useState(false);
@@ -335,6 +337,8 @@ export default function EmployeeForm({
 				});
 			},
 		});
+
+		onAfterSubmit();
 	}
 
 	return (
