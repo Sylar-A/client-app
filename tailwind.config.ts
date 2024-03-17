@@ -8,17 +8,21 @@ module.exports = {
 		container: {
 			center: true,
 			screens: {
-				"3xl": "1900px",
+				"3xl": "1920px",
 			},
 		},
 		screens: {
-			wsm: "400px",
+			xxs: "320px",
+			xs: "480px",
 			sm: "640px",
 			md: "768px",
-			lg: "1024px",
+			lg: "960px",
 			xl: "1280px",
-			"2xl": "1600px",
-			"3xl": "1900px",
+			"2xl": "1440px",
+			"3xl": "1600px",
+			"4xl": "1920px",
+			"5xl": "2133px",
+			"6xl": "2400px",
 		},
 		extend: {
 			spacing: {

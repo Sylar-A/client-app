@@ -28,7 +28,10 @@ const Table = React.forwardRef<
 	HTMLTableElement,
 	React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-	<div className="overflow-auto scrollbar">
+	<div
+		className="overflow-auto scrollbar rounded-md border shadow-2xl dark:shadow-white
+			relative md:max-h-[55vh] lg:max-h-[64vh] xl:max-h-[73vh] 2xl:max-h-[77vh] 3xl:max-h-[80vh]
+			4xl:max-h-[82vh] 5xl:max-h-[84vh] 6xl:max-h-[85.5vh]">
 		<table
 			ref={ref}
 			className={cn("caption-top text-sm border", className)}
@@ -96,7 +99,7 @@ const TableHead = React.forwardRef<
 		ref={ref}
 		className={cn(
 			"relative border-2 text-center align-middle font-medium text-zinc-500 bg-zinc-100 dark:bg-black " +
-				"[&:has([role=checkbox])]:pr-0 dark:text-zinc-400 dark:border dark:border-zinc-500",
+				"[&:has([role=checkbox])]:pr-0 dark:text-zinc-400 dark:border dark:border-zinc-500 sticky top-0",
 			className,
 		)}
 		{...props}
@@ -126,7 +129,7 @@ const TableCaption = React.forwardRef<
 	<caption
 		ref={ref}
 		className={cn(
-			"mb-1 text-xl text-zinc-500 dark:text-zinc-400",
+			"mb-1.5 mt-1 text-xl font-bold text-zinc-500 dark:text-zinc-400 text-left ml-[85vh]",
 			className,
 		)}
 		{...props}

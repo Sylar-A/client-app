@@ -130,87 +130,83 @@ export function EmployeesTable<TData, TValue>() {
 					<DataTableViewOptions table={table} />
 				</div>
 			</div>
-			<div className="rounded-md border shadow-2xl dark:shadow-white max-h-[80vh] overflow-x-hidden scrollbar">
-				<Table {...{
-					style: {
-						width: table.getCenterTotalSize()
-					}
-				}}>
-					<TableCaption className="text-left ml-[52rem] font-bold">
-						Данные о сотрудниках
-					</TableCaption>
-					<TableHeader>
-						{table.getHeaderGroups().map((headerGroup) => (
-							<TableRow key={headerGroup.id}>
-								{headerGroup.headers.map((header) => (
-									<TableHead
-										key={header.id}
-										colSpan={header.colSpan}
-									>
-										<div className="flex flex-col justify-between">
-											{flexRender(
-												header.column.columnDef.header,
-												header.getContext()
-											)}
-											{header.column.getCanFilter()
-												? <Filter column={header.column}/>
-												: null
+			<Table {...{
+				style: {
+					width: table.getCenterTotalSize()
+				}
+			}}>
+				<TableCaption>Данные о сотрудниках</TableCaption>
+				<TableHeader>
+					{table.getHeaderGroups().map((headerGroup) => (
+						<TableRow key={headerGroup.id}>
+							{headerGroup.headers.map((header) => (
+								<TableHead
+									key={header.id}
+									colSpan={header.colSpan}
+								>
+									<div className="flex flex-col justify-between">
+										{flexRender(
+											header.column.columnDef.header,
+											header.getContext()
+										)}
+										{header.column.getCanFilter()
+											? <Filter column={header.column}/>
+											: null
+										}
+										{<div {...{
+											onDoubleClick: () => header.column.resetSize(),
+											onMouseDown: header.getResizeHandler(),
+											onTouchStart: header.getResizeHandler(),
+											className: `absolute top-0 right-0 h-[100%] w-1 cursor-col-resize 
+												select-none touch-none ${table.options.columnResizeDirection}`,
+											style: {
+												transform: header.column.getIsResizing()
+													? `translateX(${table.getState().columnSizingInfo.deltaOffset}px)`
+													: "",
 											}
-											{<div {...{
-												onDoubleClick: () => header.column.resetSize(),
-												onMouseDown: header.getResizeHandler(),
-												onTouchStart: header.getResizeHandler(),
-												className: `absolute top-0 right-0 h-[100%] w-1 cursor-col-resize 
-													select-none touch-none ${table.options.columnResizeDirection}`,
-												style: {
-													transform: header.column.getIsResizing()
-														? `translateX(${table.getState().columnSizingInfo.deltaOffset}px)`
-														: "",
-												}
-											}}/>}
-										</div>
-									</TableHead>
+										}}/>}
+									</div>
+								</TableHead>
+							))}
+						</TableRow>
+					))}
+				</TableHeader>
+				<TableBody>
+					{table.getRowModel().rows?.length ? (
+						table.getRowModel().rows.map((row) => (
+							<TableRow
+								key={row.id}
+								data-state={
+									row.getIsSelected() && "selected"
+								}
+							>
+								{row.getVisibleCells().map((cell) => (
+									<TableCell
+										key={cell.id}
+										style={{ width: cell.column.getSize() }}
+									>
+										{flexRender(
+											cell.column.columnDef.cell,
+											cell.getContext(),
+										)}
+									</TableCell>
 								))}
 							</TableRow>
-						))}
-					</TableHeader>
-					<TableBody>
-						{table.getRowModel().rows?.length ? (
-							table.getRowModel().rows.map((row) => (
-								<TableRow
-									key={row.id}
-									data-state={
-										row.getIsSelected() && "selected"
-									}
-								>
-									{row.getVisibleCells().map((cell) => (
-										<TableCell
-											key={cell.id}
-											style={{ width: cell.column.getSize() }}
-										>
-											{flexRender(
-												cell.column.columnDef.cell,
-												cell.getContext(),
-											)}
-										</TableCell>
-									))}
-								</TableRow>
-							))
-						) : (
-							<TableRow>
-								<TableCell
-									colSpan={columns.length}
-									className="h-24 text-left"
-								>
-									<div className="ml-[50rem] text-2xl">
-										Данные отсутствуют.
-									</div>
-								</TableCell>
-							</TableRow>
-						)}
-					</TableBody>
-				</Table>
-			</div>
+						))
+					) : (
+						<TableRow>
+							<TableCell
+								colSpan={columns.length}
+								className="h-24 text-left"
+							>
+								<div className="ml-[50rem] text-2xl">
+									Данные отсутствуют.
+								</div>
+							</TableCell>
+						</TableRow>
+					)}
+				</TableBody>
+			</Table>
 			<DataTablePagination table={table}/>
 		</div>
 	);
