@@ -4,7 +4,7 @@ import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
-	TooltipTrigger,
+	TooltipTrigger
 } from "ui/tooltip";
 
 interface EmployeeFormInputProps extends InputProps {

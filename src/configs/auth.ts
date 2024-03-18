@@ -22,8 +22,8 @@ export const AuthConfig: AuthOptions = {
 			},
 			async authorize(credentials) {
 				if (
-					!credentials?.telegramPrivateChatId ||
-					!credentials.password
+					!credentials?.telegramPrivateChatId
+					|| !credentials.password
 				) {
 					return null;
 				}
@@ -33,10 +33,10 @@ export const AuthConfig: AuthOptions = {
 					variables: {
 						where: {
 							telegramPrivateChatId: {
-								eq: Number(credentials.telegramPrivateChatId),
-							},
-						},
-					},
+								eq: Number(credentials.telegramPrivateChatId)
+							}
+						}
+					}
 				});
 
 				const items = query.data?.employees?.items;
@@ -53,7 +53,7 @@ export const AuthConfig: AuthOptions = {
 
 				const passwordMatches = await bcrypt.compare(
 					credentials.password,
-					employee.password,
+					employee.password
 				);
 
 				if (!passwordMatches) {
@@ -63,12 +63,12 @@ export const AuthConfig: AuthOptions = {
 				const { password, ...employeeWithoutPassword } = employee;
 
 				return employeeWithoutPassword as User;
-			},
-		}),
+			}
+		})
 	],
 	pages: {
 		signIn: "/api/auth/signin",
-		newUser: "/api/auth/reset-password",
+		newUser: "/api/auth/reset-password"
 	},
 	callbacks: {
 		async session({ session, user, token }) {
@@ -77,8 +77,8 @@ export const AuthConfig: AuthOptions = {
 				...session,
 				user: {
 					...session.user,
-					id: token.id,
-				},
+					id: token.id
+				}
 			};
 		},
 		async jwt({
@@ -88,20 +88,20 @@ export const AuthConfig: AuthOptions = {
 			profile,
 			isNewUser,
 			session,
-			trigger,
+			trigger
 		}) {
 			if (user) {
 				return {
 					...token,
-					id: user.id,
+					id: user.id
 				};
 			}
 			return token;
-		},
+		}
 	},
 	secret: process.env.NEXTAUTH_SECRET,
 	session: {
-		strategy: "jwt",
+		strategy: "jwt"
 	},
-	debug: process.env.NODE_ENV === "development",
+	debug: process.env.NODE_ENV === "development"
 };

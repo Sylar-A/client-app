@@ -9,7 +9,7 @@ import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
-	AccordionTrigger,
+	AccordionTrigger
 } from "ui/accordion";
 import { DialogItem, DialogTitle } from "ui/dialog";
 import { Button } from "ui/button";
@@ -20,7 +20,7 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage,
+	FormMessage
 } from "ui/form";
 import { toast } from "ui/use-toast";
 import EmployeeFormInput from "./employeeFormInput";
@@ -32,7 +32,7 @@ import {
 	EmployeePost,
 	EmployeeRating,
 	EmployeeSourceType,
-	RobokassaAccountType,
+	RobokassaAccountType
 } from "__generated__/types";
 import {
 	ConvertFromEmployeeConfirmationLevel,
@@ -45,7 +45,7 @@ import {
 	ConvertToEmployeePost,
 	ConvertToEmployeeRating,
 	ConvertToEmployeeSourceType,
-	ConvertToRobokassaAccountType,
+	ConvertToRobokassaAccountType
 } from "utils/enumConverter";
 import {
 	GetEmployeeConfirmationLevels,
@@ -54,7 +54,7 @@ import {
 	GetEmployeeRatings,
 	GetEmployeeSourceTypes,
 	GetRobokassaAccountTypes,
-	GetYesNo,
+	GetYesNo
 } from "utils/enumKeyValues";
 import { useEmployeeMutation } from "./__generated__/EmployeeMutation";
 import { YesNo } from "types/types";
@@ -63,7 +63,7 @@ interface EmployeeFormProps {
 	isReadOnly: boolean;
 	employee?: Employee | undefined;
 	trigger: ReactNode;
-	onAfterSubmit: () => void
+	onAfterSubmit: () => void;
 }
 
 const formSchema = z.object({
@@ -121,7 +121,7 @@ const formSchema = z.object({
 		.optional(),
 	passportSource: z.ostring(),
 	passportDate: z.date().optional().nullish(),
-	passportDivisionCode: z.ostring(),
+	passportDivisionCode: z.ostring()
 });
 
 export default function EmployeeForm({
@@ -148,8 +148,8 @@ export default function EmployeeForm({
 			ratings: {
 				confidenceLevel: EmployeeRating.None,
 				punctualityLevel: EmployeeRating.None,
-				workQualityLevel: EmployeeRating.None,
-			},
+				workQualityLevel: EmployeeRating.None
+			}
 		} as Employee;
 	}
 
@@ -176,37 +176,37 @@ export default function EmployeeForm({
 			age: employee.age as number | undefined,
 			district: employee.district ? employee.district : undefined,
 			sourceType: ConvertFromEmployeeSourceType(
-				employee.sourceType || EmployeeSourceType.None,
+				employee.sourceType || EmployeeSourceType.None
 			),
 			personalCar: ConvertFromYesNo(
-				employee.personalCar ? YesNo.Yes : YesNo.No,
+				employee.personalCar ? YesNo.Yes : YesNo.No
 			),
 			yearOfTruckIssue: employee.yearOfTruckIssue as number | undefined,
 			robokassaAccountType: ConvertFromRobokassaAccountType(
-				employee.robokassaAccountType || RobokassaAccountType.None,
+				employee.robokassaAccountType || RobokassaAccountType.None
 			),
 
 			groupNumber: ConvertFromEmployeeRating(
-				employee.groupNumber || EmployeeRating.None,
+				employee.groupNumber || EmployeeRating.None
 			),
 			confidenceLevel: ConvertFromEmployeeRating(
-				employee.ratings?.confidenceLevel || EmployeeRating.None,
+				employee.ratings?.confidenceLevel || EmployeeRating.None
 			),
 			punctualityLevel: ConvertFromEmployeeRating(
-				employee.ratings?.punctualityLevel || EmployeeRating.None,
+				employee.ratings?.punctualityLevel || EmployeeRating.None
 			),
 			workQualityLevel: ConvertFromEmployeeRating(
-				employee.ratings?.workQualityLevel || EmployeeRating.None,
+				employee.ratings?.workQualityLevel || EmployeeRating.None
 			),
 			ratingComment: employee.ratingComment as string | undefined,
 
 			active: ConvertFromYesNo(employee.active ? YesNo.Yes : YesNo.No),
 			blocked: ConvertFromYesNo(employee.blocked ? YesNo.Yes : YesNo.No),
 			privateChatStarted: ConvertFromYesNo(
-				employee.privateChatStarted ? YesNo.Yes : YesNo.No,
+				employee.privateChatStarted ? YesNo.Yes : YesNo.No
 			),
 			confirmationLevel: ConvertFromEmployeeConfirmationLevel(
-				employee.confirmationLevel || EmployeeConfirmationLevel.None,
+				employee.confirmationLevel || EmployeeConfirmationLevel.None
 			),
 			comment: employee.comment as string | undefined,
 
@@ -221,8 +221,8 @@ export default function EmployeeForm({
 			passportDate: employee.passport?.date
 				? moment(employee.passport.date).toDate()
 				: undefined,
-			passportDivisionCode: employee.passport?.divisionCode,
-		},
+			passportDivisionCode: employee.passport?.divisionCode
+		}
 	});
 
 	async function onSubmit(data: z.infer<typeof formSchema>) {
@@ -231,7 +231,7 @@ export default function EmployeeForm({
 				createEmployeeInput: {
 					id: employee?.id,
 					city: {
-						name: data.city,
+						name: data.city
 					},
 					post: ConvertToEmployeePost(data.post),
 					active: data.active === ConvertFromYesNo(YesNo.Yes),
@@ -253,20 +253,20 @@ export default function EmployeeForm({
 							: EmployeeRating.None,
 						workQualityLevel: data.workQualityLevel
 							? ConvertToEmployeeRating(data.workQualityLevel)
-							: EmployeeRating.None,
+							: EmployeeRating.None
 					},
 					groupNumber: data.groupNumber
 						? ConvertToEmployeeRating(data.groupNumber)
 						: EmployeeRating.None,
 					confirmationLevel: data.confirmationLevel
 						? ConvertToEmployeeConfirmationLevel(
-								data.confirmationLevel,
+								data.confirmationLevel
 							)
 						: EmployeeConfirmationLevel.None,
 					phoneNumbers: [
 						{
-							number: data.phoneNumbers,
-						},
+							number: data.phoneNumbers
+						}
 					],
 					sourceType: data.sourceType
 						? ConvertToEmployeeSourceType(data.sourceType)
@@ -275,12 +275,12 @@ export default function EmployeeForm({
 						data.personalCar === ConvertFromYesNo(YesNo.Yes),
 					yearOfTruckIssue: data.yearOfTruckIssue,
 					passport:
-						!data.passportCountry &&
-						!data.passportSeries &&
-						!data.passportNumber &&
-						!data.passportDate &&
-						!data.passportSource &&
-						!data.passportDivisionCode
+						!data.passportCountry
+						&& !data.passportSeries
+						&& !data.passportNumber
+						&& !data.passportDate
+						&& !data.passportSource
+						&& !data.passportDivisionCode
 							? null
 							: {
 									country: data.passportCountry,
@@ -288,17 +288,17 @@ export default function EmployeeForm({
 									number: data.passportNumber,
 									date: data.passportDate,
 									source: data.passportSource,
-									divisionCode: data.passportDivisionCode,
+									divisionCode: data.passportDivisionCode
 								},
 					robokassaAccountType: data.robokassaAccountType
 						? ConvertToRobokassaAccountType(
-								data.robokassaAccountType,
+								data.robokassaAccountType
 							)
 						: RobokassaAccountType.None,
 					joinedDate: data.joinedDate,
 					birthDate: data.birthDate,
-					district: data.district,
-				},
+					district: data.district
+				}
 			},
 			onCompleted: (response) => {
 				if (response.createOrUpdateEmployee.errorMessage) {
@@ -309,7 +309,7 @@ export default function EmployeeForm({
 							<div>
 								{response.createOrUpdateEmployee.errorMessage}
 							</div>
-						),
+						)
 					});
 				} else {
 					const isNewEmployee = !employee?.id;
@@ -325,7 +325,7 @@ export default function EmployeeForm({
 									? "Сотрудник успешно добавлен!"
 									: "Данные по сотруднику успешно изменены!"}
 							</div>
-						),
+						)
 					});
 				}
 			},
@@ -333,9 +333,9 @@ export default function EmployeeForm({
 				toast({
 					title: "Внимание!",
 					variant: "error",
-					description: <div>{response.message}</div>,
+					description: <div>{response.message}</div>
 				});
-			},
+			}
 		});
 
 		onAfterSubmit();
@@ -361,7 +361,7 @@ export default function EmployeeForm({
 							"item-2",
 							"item-3",
 							"item-4",
-							"item-5",
+							"item-5"
 						]}
 					>
 						<AccordionItem value="item-1">
@@ -757,7 +757,9 @@ export default function EmployeeForm({
 													disabled={isReadOnly}
 													{...field}
 													value={
-														field.value as | string | undefined
+														(field.value as
+															| string
+															| undefined)
 														|| employee?.ratingComment
 														|| ""
 													}
@@ -853,7 +855,9 @@ export default function EmployeeForm({
 													disabled={isReadOnly}
 													{...field}
 													value={
-														field.value as | string | undefined
+														(field.value as
+															| string
+															| undefined)
 														|| employee?.comment
 														|| ""
 													}

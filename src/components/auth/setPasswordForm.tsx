@@ -15,7 +15,7 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage,
+	FormMessage
 } from "ui/form";
 
 const formSchema = z
@@ -24,28 +24,28 @@ const formSchema = z
 			.string()
 			.regex(
 				new RegExp(
-					"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",
+					"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
 				),
 				{
 					message:
-						"Пароль должен иметь минимум 8 символов, хотя бы 1 букву, заглавную букву, символ и цифру",
-				},
+						"Пароль должен иметь минимум 8 символов, хотя бы 1 букву, заглавную букву, символ и цифру"
+				}
 			),
 		confirmPassword: z
 			.string()
 			.regex(
 				new RegExp(
-					"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",
+					"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
 				),
 				{
 					message:
-						"Пароль должен иметь минимум 8 символов, хотя бы 1 букву, заглавную букву, символ и цифру",
-				},
-			),
+						"Пароль должен иметь минимум 8 символов, хотя бы 1 букву, заглавную букву, символ и цифру"
+				}
+			)
 	})
 	.refine((data) => data.password === data.confirmPassword, {
 		message: "Пароли не совпадают",
-		path: ["confirmPassword"],
+		path: ["confirmPassword"]
 	});
 
 interface SetPasswordFormProps {
@@ -55,7 +55,7 @@ interface SetPasswordFormProps {
 
 export default function SetPasswordForm({
 	token,
-	telegramPrivateChatId,
+	telegramPrivateChatId
 }: SetPasswordFormProps) {
 	const router = useRouter();
 
@@ -63,8 +63,8 @@ export default function SetPasswordForm({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			password: "",
-			confirmPassword: "",
-		},
+			confirmPassword: ""
+		}
 	});
 
 	async function onSubmit(data: z.infer<typeof formSchema>) {
@@ -76,9 +76,9 @@ export default function SetPasswordForm({
 				params: {
 					telegramPrivateChatId: Number(telegramPrivateChatId),
 					password: hashedPassword,
-					token: token,
+					token: token
 				},
-				withCredentials: false,
+				withCredentials: false
 			})
 			.then(() => {
 				toast({
@@ -88,7 +88,7 @@ export default function SetPasswordForm({
 						<div>
 							Вы будете перенаправлены на страницу авторизации.
 						</div>
-					),
+					)
 				});
 
 				setTimeout(() => {
@@ -105,7 +105,7 @@ export default function SetPasswordForm({
 								? response.response.data.detail
 								: response.message}
 						</div>
-					),
+					)
 				});
 			});
 	}

@@ -6,5 +6,5 @@ interface ExportToExcelButtonProps<TData> {
 }
 export function ExportToExcelButton<TData>({
 	data,
-	table,
+	table
 }: ExportToExcelButtonProps<TData>) {}

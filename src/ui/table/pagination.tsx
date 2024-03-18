@@ -2,7 +2,7 @@ import {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	DoubleArrowLeftIcon,
-	DoubleArrowRightIcon,
+	DoubleArrowRightIcon
 } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
@@ -12,7 +12,7 @@ import {
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
-	SelectValue,
+	SelectValue
 } from "ui/select";
 
 interface DataTablePaginationProps<TData> {
@@ -20,7 +20,7 @@ interface DataTablePaginationProps<TData> {
 }
 
 export function DataTablePagination<TData>({
-	table,
+	table
 }: DataTablePaginationProps<TData>) {
 	return (
 		<div className="flex items-center justify-between p-2">
@@ -53,7 +53,7 @@ export function DataTablePagination<TData>({
 									>
 										{pageSize}
 									</SelectItem>
-								),
+								)
 							)}
 						</SelectContent>
 					</Select>

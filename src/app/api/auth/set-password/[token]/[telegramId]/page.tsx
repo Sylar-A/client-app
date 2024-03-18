@@ -1,7 +1,7 @@
 import SetPasswordForm from "components/auth/setPasswordForm";
 
 export default function ChangePassword({
-	params,
+	params
 }: {
 	params: { token: string; telegramId: number };
 }) {

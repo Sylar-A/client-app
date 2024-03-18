@@ -15,7 +15,7 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage,
+	FormMessage
 } from "ui/form";
 
 interface AuthorizationFormProps {
@@ -24,19 +24,19 @@ interface AuthorizationFormProps {
 
 const formSchema = z.object({
 	telegramPrivateChatId: z.string().min(1, {
-		message: "ID Телеграм не должен быть пустым!",
+		message: "ID Телеграм не должен быть пустым!"
 	}),
 	password: z
 		.string()
 		.regex(
 			new RegExp(
-				"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",
+				"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
 			),
 			{
 				message:
-					"Пароль должен иметь минимум 8 символов, хотя бы 1 букву, заглавную букву, символ и цифру",
-			},
-		),
+					"Пароль должен иметь минимум 8 символов, хотя бы 1 букву, заглавную букву, символ и цифру"
+			}
+		)
 });
 
 export default function AuthorizationForm({ header }: AuthorizationFormProps) {
@@ -46,8 +46,8 @@ export default function AuthorizationForm({ header }: AuthorizationFormProps) {
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			telegramPrivateChatId: "",
-			password: "",
-		},
+			password: ""
+		}
 	});
 
 	async function onSubmit(data: z.infer<typeof formSchema>) {
@@ -55,14 +55,14 @@ export default function AuthorizationForm({ header }: AuthorizationFormProps) {
 		const result = await signIn("credentials", {
 			telegramPrivateChatId: data.telegramPrivateChatId,
 			password: data.password,
-			redirect: false,
+			redirect: false
 		});
 
 		if (result && !result.error) {
 			toast({
 				title: "Авторизация:",
 				variant: "success",
-				description: <div>Успешно авторизованы.</div>,
+				description: <div>Успешно авторизованы.</div>
 			});
 
 			router.push("/");
@@ -70,7 +70,7 @@ export default function AuthorizationForm({ header }: AuthorizationFormProps) {
 			toast({
 				title: "Внимание!",
 				variant: "error",
-				description: <div>Указан неверный ID Телеграм или пароль!</div>,
+				description: <div>Указан неверный ID Телеграм или пароль!</div>
 			});
 		}
 	}
@@ -132,7 +132,7 @@ export default function AuthorizationForm({ header }: AuthorizationFormProps) {
 										onClick={(event) => {
 											event.preventDefault();
 											router.push(
-												"/api/auth/reset-password",
+												"/api/auth/reset-password"
 											);
 										}}
 									>

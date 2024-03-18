@@ -11,7 +11,7 @@ import {
 	getSortedRowModel,
 	SortingState,
 	useReactTable,
-	VisibilityState,
+	VisibilityState
 } from "@tanstack/react-table";
 import { RefreshCwIcon, UserRoundPlusIcon } from "lucide-react";
 import {
@@ -21,7 +21,7 @@ import {
 	TableCell,
 	TableHead,
 	TableHeader,
-	TableRow,
+	TableRow
 } from "ui/table";
 import { DataTablePagination } from "ui/table/pagination";
 import { DataTableViewOptions } from "ui/table/columnToggle";
@@ -54,7 +54,10 @@ export function EmployeesTable<TData, TValue>() {
 
 	const employees = (query?.data as FakeAny).employees;
 	let data = employees.items;
-	const columns = TableColumns({ onAfterSubmit: handleRefresh}) as ColumnDef<TData, TValue>[];
+	const columns = TableColumns({ onAfterSubmit: handleRefresh }) as ColumnDef<
+		TData,
+		TValue
+	>[];
 
 	/*useEffect(() => {
         setTotalCount(employees.totalCount);
@@ -70,7 +73,7 @@ export function EmployeesTable<TData, TValue>() {
 			columnFilters,
 			columnVisibility,
 			rowSelection,
-			globalFilter,
+			globalFilter
 		},
 		onSortingChange: setSorting,
 		onColumnFiltersChange: setColumnFilters,
@@ -83,8 +86,8 @@ export function EmployeesTable<TData, TValue>() {
 		getSortedRowModel: getSortedRowModel(),
 		columnResizeMode: "onChange",
 		defaultColumn: {
-			enableResizing: true,
-		},
+			enableResizing: true
+		}
 	});
 
 	async function handleRefresh() {
@@ -96,11 +99,7 @@ export function EmployeesTable<TData, TValue>() {
 		toast({
 			title: "Обновление данных:",
 			variant: "success",
-			description: (
-				<div>
-					{"Данные успешно обновлены!"}
-				</div>
-			)
+			description: <div>{"Данные успешно обновлены!"}</div>
 		});
 	}
 
@@ -152,22 +151,29 @@ export function EmployeesTable<TData, TValue>() {
 											header.column.columnDef.header,
 											header.getContext()
 										)}
-										{header.column.getCanFilter()
-											? <Filter column={header.column}/>
-											: null
-										}
-										{<div {...{
-											onDoubleClick: () => header.column.resetSize(),
-											onMouseDown: header.getResizeHandler(),
-											onTouchStart: header.getResizeHandler(),
-											className: `absolute top-0 right-0 h-[100%] w-1 cursor-col-resize 
+										{header.column.getCanFilter() ? (
+											<Filter column={header.column} />
+										) : null}
+										{
+											<div
+												{...{
+													onDoubleClick: () =>
+														header.column.resetSize(),
+													onMouseDown:
+														header.getResizeHandler(),
+													onTouchStart:
+														header.getResizeHandler(),
+													className: `absolute top-0 right-0 h-[100%] w-1 cursor-col-resize 
 												select-none touch-none ${table.options.columnResizeDirection}`,
-											style: {
-												transform: header.column.getIsResizing()
-													? `translateX(${table.getState().columnSizingInfo.deltaOffset}px)`
-													: "",
-											}
-										}}/>}
+													style: {
+														transform:
+															header.column.getIsResizing()
+																? `translateX(${table.getState().columnSizingInfo.deltaOffset}px)`
+																: ""
+													}
+												}}
+											/>
+										}
 									</div>
 								</TableHead>
 							))}
@@ -179,9 +185,7 @@ export function EmployeesTable<TData, TValue>() {
 						table.getRowModel().rows.map((row) => (
 							<TableRow
 								key={row.id}
-								data-state={
-									row.getIsSelected() && "selected"
-								}
+								data-state={row.getIsSelected() && "selected"}
 							>
 								{row.getVisibleCells().map((cell) => (
 									<TableCell
@@ -190,7 +194,7 @@ export function EmployeesTable<TData, TValue>() {
 									>
 										{flexRender(
 											cell.column.columnDef.cell,
-											cell.getContext(),
+											cell.getContext()
 										)}
 									</TableCell>
 								))}
@@ -210,7 +214,7 @@ export function EmployeesTable<TData, TValue>() {
 					)}
 				</TableBody>
 			</Table>
-			<DataTablePagination table={table}/>
+			<DataTablePagination table={table} />
 		</div>
 	);
 }

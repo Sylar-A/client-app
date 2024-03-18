@@ -9,7 +9,7 @@ interface DataTableViewOptionsProps<TData> {
 }
 
 export function ClearFiltersButton<TData>({
-	table,
+	table
 }: DataTableViewOptionsProps<TData>) {
 	return (
 		<Button

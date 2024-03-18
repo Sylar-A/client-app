@@ -10,7 +10,7 @@ import {
 	DropdownMenuCheckboxItem,
 	DropdownMenuContent,
 	DropdownMenuLabel,
-	DropdownMenuSeparator,
+	DropdownMenuSeparator
 } from "ui/dropdown-menu";
 
 interface DataTableViewOptionsProps<TData> {
@@ -18,7 +18,7 @@ interface DataTableViewOptionsProps<TData> {
 }
 
 export function DataTableViewOptions<TData>({
-	table,
+	table
 }: DataTableViewOptionsProps<TData>) {
 	return (
 		<DropdownMenu>
@@ -44,8 +44,8 @@ export function DataTableViewOptions<TData>({
 					.getAllColumns()
 					.filter(
 						(column) =>
-							typeof column.accessorFn !== "undefined" &&
-							column.getCanHide(),
+							typeof column.accessorFn !== "undefined"
+							&& column.getCanHide()
 					)
 					.map((column) => {
 						return (
@@ -55,7 +55,7 @@ export function DataTableViewOptions<TData>({
 								onCheckedChange={(value) =>
 									column.toggleVisibility(value)
 								}
-								onSelect={event => event.preventDefault()}
+								onSelect={(event) => event.preventDefault()}
 							>
 								{column.id}
 							</DropdownMenuCheckboxItem>

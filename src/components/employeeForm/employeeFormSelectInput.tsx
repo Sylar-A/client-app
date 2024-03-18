@@ -6,7 +6,7 @@ import {
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
-	SelectValue,
+	SelectValue
 } from "ui/select";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
 

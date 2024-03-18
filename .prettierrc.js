@@ -4,7 +4,7 @@ module.exports = {
 	endOfLine: "lf",
 	semi: true,
 	singleQuote: false,
-	trailingComma: "all",
+	trailingComma: "none",
 	printWidth: 80,
 	importOrder: [
 		"^apollo/(.*)$",
@@ -29,8 +29,9 @@ module.exports = {
 		"^@ui/(.*)$",
 		"^utils/(.*)$",
 		"^@utils/(.*)$",
-		"^[./]",
+		"^[./]"
 	],
 	importOrderSeparation: true,
 	formatOnSave: true,
+	operatorPosition: "beginning"
 };

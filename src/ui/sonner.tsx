@@ -18,8 +18,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
 					actionButton:
 						"group-[.toast]:bg-zinc-900 group-[.toast]:text-zinc-50 dark:group-[.toast]:bg-zinc-50 dark:group-[.toast]:text-zinc-900",
 					cancelButton:
-						"group-[.toast]:bg-zinc-100 group-[.toast]:text-zinc-500 dark:group-[.toast]:bg-zinc-800 dark:group-[.toast]:text-zinc-400",
-				},
+						"group-[.toast]:bg-zinc-100 group-[.toast]:text-zinc-500 dark:group-[.toast]:bg-zinc-800 dark:group-[.toast]:text-zinc-400"
+				}
 			}}
 			{...props}
 		/>

@@ -6,7 +6,7 @@ module.exports = {
 		app: {
 			//schema: [`${process.env.APOLLO_SERVER_URL}`],
 			schema: [`./schema.graphql`],
-			documents: ["src/**/*.graphql"],
-		},
-	},
+			documents: ["src/**/*.graphql"]
+		}
+	}
 };

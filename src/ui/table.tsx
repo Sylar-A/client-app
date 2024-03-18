@@ -6,7 +6,7 @@ import { FilterFn, RowData } from "@tanstack/table-core";
 import {
 	RankingInfo,
 	rankItem,
-	compareItems,
+	compareItems
 } from "@tanstack/match-sorter-utils";
 
 declare module "@tanstack/table-core" {
@@ -31,7 +31,8 @@ const Table = React.forwardRef<
 	<div
 		className="overflow-auto scrollbar rounded-md border shadow-2xl dark:shadow-white
 			relative md:max-h-[55vh] lg:max-h-[64vh] xl:max-h-[73vh] 2xl:max-h-[77vh] 3xl:max-h-[80vh]
-			4xl:max-h-[82vh] 5xl:max-h-[84vh] 6xl:max-h-[85.5vh]">
+			4xl:max-h-[82vh] 5xl:max-h-[84vh] 6xl:max-h-[85.5vh]"
+	>
 		<table
 			ref={ref}
 			className={cn("caption-top text-sm border", className)}
@@ -69,7 +70,7 @@ const TableFooter = React.forwardRef<
 		ref={ref}
 		className={cn(
 			"border-t bg-zinc-100/50 font-medium [&>tr]:last:border-b-0 dark:bg-zinc-800/50",
-			className,
+			className
 		)}
 		{...props}
 	/>
@@ -82,9 +83,9 @@ const TableRow = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<tr
 		className={cn(
-			"border transition-colors hover:bg-zinc-100 " +
-				"data-[state=selected]:bg-zinc-100 dark:hover:bg-zinc-800 dark:data-[state=selected]:bg-zinc-800",
-			className,
+			"border transition-colors hover:bg-zinc-100 "
+				+ "data-[state=selected]:bg-zinc-100 dark:hover:bg-zinc-800 dark:data-[state=selected]:bg-zinc-800",
+			className
 		)}
 		{...props}
 	/>
@@ -98,9 +99,9 @@ const TableHead = React.forwardRef<
 	<th
 		ref={ref}
 		className={cn(
-			"relative border-2 text-center align-middle font-medium text-zinc-500 bg-zinc-100 dark:bg-black " +
-				"[&:has([role=checkbox])]:pr-0 dark:text-zinc-400 dark:border dark:border-zinc-500 sticky top-0",
-			className,
+			"relative border-2 text-center align-middle font-medium text-zinc-500 bg-zinc-100 dark:bg-black "
+				+ "[&:has([role=checkbox])]:pr-0 dark:text-zinc-400 dark:border dark:border-zinc-500 sticky top-0",
+			className
 		)}
 		{...props}
 	/>
@@ -115,7 +116,7 @@ const TableCell = React.forwardRef<
 		ref={ref}
 		className={cn(
 			"border-2 p-1 text-center align-middle [&:has([role=checkbox])]:pr-0 dark:border dark:border-zinc-500",
-			className,
+			className
 		)}
 		{...props}
 	/>
@@ -130,7 +131,7 @@ const TableCaption = React.forwardRef<
 		ref={ref}
 		className={cn(
 			"mb-1.5 mt-1 text-xl font-bold text-zinc-500 dark:text-zinc-400 text-left ml-[85vh]",
-			className,
+			className
 		)}
 		{...props}
 	/>
@@ -145,5 +146,5 @@ export {
 	TableHead,
 	TableRow,
 	TableCell,
-	TableCaption,
+	TableCaption
 };

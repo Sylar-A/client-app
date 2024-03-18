@@ -5,5 +5,5 @@ export interface EnumKeyValue {
 
 export enum YesNo {
 	Yes = "Да",
-	No = "Нет",
+	No = "Нет"
 }

@@ -18,7 +18,7 @@ function GetEmployeePosts(): string[] {
 		"Водитель",
 		"Менеджер по персоналу",
 		"Оператор",
-		"Руководитель",
+		"Руководитель"
 	];
 }
 
@@ -27,7 +27,7 @@ function GetEmployeeConfirmationLevels(): string[] {
 		"Не подтвержден",
 		"Подтвердил документы",
 		"Подтвержден менеджером по персоналу",
-		"Верифицирован",
+		"Верифицирован"
 	];
 }
 
@@ -41,7 +41,7 @@ function GetRobokassaAccountTypes(): string[] {
 		"Первый аккаунт Казани",
 		"Второй аккаунт Казани",
 		"Первый аккаунт НН",
-		"Тестовый",
+		"Тестовый"
 	];
 }
 
@@ -52,5 +52,5 @@ export {
 	GetEmployeePosts,
 	GetEmployeeConfirmationLevels,
 	GetEmployeeSourceTypes,
-	GetRobokassaAccountTypes,
+	GetRobokassaAccountTypes
 };

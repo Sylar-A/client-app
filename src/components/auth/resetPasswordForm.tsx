@@ -15,7 +15,7 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage,
+	FormMessage
 } from "ui/form";
 import { useEffect, useState } from "react";
 import { Employee, EmployeePost } from "__generated__/types";
@@ -24,8 +24,8 @@ import { FakeAny } from "common/types/FakeAny";
 
 const formSchema = z.object({
 	telegramPrivateChatId: z.string().min(1, {
-		message: "ID Телеграм не должен быть пустым!",
-	}),
+		message: "ID Телеграм не должен быть пустым!"
+	})
 });
 
 export default function ResetPasswordForm() {
@@ -34,8 +34,8 @@ export default function ResetPasswordForm() {
 
 	const query = useEmployeesSuspenseQuery({
 		where: {
-			telegramPrivateChatId: { eq: Number(telegramPrivateChatId) },
-		},
+			telegramPrivateChatId: { eq: Number(telegramPrivateChatId) }
+		}
 	});
 
 	useEffect(() => {
@@ -58,7 +58,7 @@ export default function ResetPasswordForm() {
 						<div>
 							Пользователь с указанным ID Телеграм не найден!
 						</div>
-					),
+					)
 				});
 			}
 		}
@@ -84,10 +84,10 @@ export default function ResetPasswordForm() {
 		}
 
 		if (
-			employee.post !== EmployeePost.Head &&
-			employee.post !== EmployeePost.Operator &&
-			employee.post !== EmployeePost.Administrator &&
-			employee.post !== EmployeePost.HrManager
+			employee.post !== EmployeePost.Head
+			&& employee.post !== EmployeePost.Operator
+			&& employee.post !== EmployeePost.Administrator
+			&& employee.post !== EmployeePost.HrManager
 		) {
 			errorMessages.push("Пользователь не имеет прав для сброса пароля!");
 		}
@@ -96,21 +96,24 @@ export default function ResetPasswordForm() {
 			toast({
 				title: "Ошибка!",
 				variant: "error",
-				description: <div>{errorMessages}</div>,
+				description: <div>{errorMessages}</div>
 			});
 		} else {
 			getCsrfToken().then((token) => {
 				axiosClient
-					.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/Login/ResetPassword`, {
-						params: {
-							telegramPrivateChatId: Number(
-								telegramPrivateChatId,
-							),
-							link: `${process.env.NEXT_PUBLIC_CLIENT_URL}/api/auth/set-password/`,
-							token: token,
-						},
-						withCredentials: false,
-					})
+					.get(
+						`${process.env.NEXT_PUBLIC_SERVER_URL}/Login/ResetPassword`,
+						{
+							params: {
+								telegramPrivateChatId: Number(
+									telegramPrivateChatId
+								),
+								link: `${process.env.NEXT_PUBLIC_CLIENT_URL}/api/auth/set-password/`,
+								token: token
+							},
+							withCredentials: false
+						}
+					)
 					.then(() => {
 						toast({
 							title: "Запрос успешно отправлен!",
@@ -120,7 +123,7 @@ export default function ResetPasswordForm() {
 									Перейдите в чат с ботом для дальнейших
 									действий.
 								</div>
-							),
+							)
 						});
 					})
 					.catch((response) => {
@@ -133,7 +136,7 @@ export default function ResetPasswordForm() {
 										? response.response.data.detail
 										: response.message}
 								</div>
-							),
+							)
 						});
 					});
 			});
@@ -143,8 +146,8 @@ export default function ResetPasswordForm() {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			telegramPrivateChatId: "",
-		},
+			telegramPrivateChatId: ""
+		}
 	});
 
 	function onSubmit(data: z.infer<typeof formSchema>) {

@@ -4,7 +4,7 @@ import {
 	ToastDescription,
 	ToastProvider,
 	ToastTitle,
-	ToastViewport,
+	ToastViewport
 } from "ui/toast";
 import { useToast } from "ui/use-toast";
 

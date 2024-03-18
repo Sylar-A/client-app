@@ -8,7 +8,7 @@ import {
 	HomeOutlined,
 	LoginOutlined,
 	LogoutOutlined,
-	UserOutlined,
+	UserOutlined
 } from "@ant-design/icons";
 import { Button } from "ui/button";
 import {
@@ -16,7 +16,7 @@ import {
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuList,
-	navigationMenuTriggerStyle,
+	navigationMenuTriggerStyle
 } from "ui/navigation-menu";
 
 export function SiteNavigation() {
@@ -64,7 +64,7 @@ export function SiteNavigation() {
 									>
 										<UserOutlined
 											style={{
-												fontSize: `${iconsSize}px`,
+												fontSize: `${iconsSize}px`
 											}}
 										/>
 										<div className="pl-2 hidden md:block">
@@ -89,7 +89,7 @@ export function SiteNavigation() {
 								}
 								onClick={() =>
 									setTheme(
-										theme === "dark" ? "light" : "dark",
+										theme === "dark" ? "light" : "dark"
 									)
 								}
 							>
@@ -117,7 +117,7 @@ export function SiteNavigation() {
 									href="#"
 									onClick={() =>
 										signOut({
-											callbackUrl: "/",
+											callbackUrl: "/"
 										})
 									}
 								>
@@ -126,7 +126,7 @@ export function SiteNavigation() {
 									>
 										<LogoutOutlined
 											style={{
-												fontSize: `${iconsSize}px`,
+												fontSize: `${iconsSize}px`
 											}}
 										/>
 										<div className="pl-2 hidden md:block">
@@ -135,13 +135,17 @@ export function SiteNavigation() {
 									</NavigationMenuLink>
 								</Link>
 							) : (
-								<Link href="/api/auth/signin" legacyBehavior passHref>
+								<Link
+									href="/api/auth/signin"
+									legacyBehavior
+									passHref
+								>
 									<NavigationMenuLink
 										className={navigationMenuTriggerStyle()}
 									>
 										<LoginOutlined
 											style={{
-												fontSize: `${iconsSize}px`,
+												fontSize: `${iconsSize}px`
 											}}
 										/>
 										<div className="pl-2 hidden md:block">

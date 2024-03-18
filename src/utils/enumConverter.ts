@@ -3,7 +3,7 @@ import {
 	EmployeePost,
 	EmployeeRating,
 	EmployeeSourceType,
-	RobokassaAccountType,
+	RobokassaAccountType
 } from "__generated__/types";
 import { YesNo } from "../types/types";
 
@@ -161,7 +161,7 @@ function ConvertToEmployeePost(employeePost: string): EmployeePost {
 }
 
 function ConvertFromEmployeeConfirmationLevel(
-	employeeConfirmationLevel: EmployeeConfirmationLevel,
+	employeeConfirmationLevel: EmployeeConfirmationLevel
 ): string {
 	let result;
 
@@ -184,7 +184,7 @@ function ConvertFromEmployeeConfirmationLevel(
 }
 
 function ConvertToEmployeeConfirmationLevel(
-	employeeConfirmationLevel: string,
+	employeeConfirmationLevel: string
 ): EmployeeConfirmationLevel {
 	let result;
 
@@ -210,7 +210,7 @@ function ConvertToEmployeeConfirmationLevel(
 }
 
 function ConvertFromEmployeeSourceType(
-	employeeSourceType: EmployeeSourceType,
+	employeeSourceType: EmployeeSourceType
 ): string {
 	let result;
 
@@ -233,7 +233,7 @@ function ConvertFromEmployeeSourceType(
 }
 
 function ConvertToEmployeeSourceType(
-	employeeSourceType: string,
+	employeeSourceType: string
 ): EmployeeSourceType {
 	let result;
 
@@ -259,7 +259,7 @@ function ConvertToEmployeeSourceType(
 }
 
 function ConvertFromRobokassaAccountType(
-	robokassaAccountType: RobokassaAccountType,
+	robokassaAccountType: RobokassaAccountType
 ): string {
 	let result;
 
@@ -285,7 +285,7 @@ function ConvertFromRobokassaAccountType(
 }
 
 function ConvertToRobokassaAccountType(
-	robokassaAccountType: string,
+	robokassaAccountType: string
 ): RobokassaAccountType {
 	let result;
 
@@ -325,5 +325,5 @@ export {
 	ConvertFromEmployeeSourceType,
 	ConvertToEmployeeSourceType,
 	ConvertFromRobokassaAccountType,
-	ConvertToRobokassaAccountType,
+	ConvertToRobokassaAccountType
 };

@@ -7,7 +7,7 @@ import { FakeAny } from "common/types/FakeAny";
 
 export function useLocalStorageState<S>(
 	nameItemStorage: string,
-	initialState: S | (() => S),
+	initialState: S | (() => S)
 ): [S, React.Dispatch<React.SetStateAction<S>>] {
 	const [state, setState] = React.useState<S>(initialState);
 
@@ -21,7 +21,7 @@ export function useLocalStorageState<S>(
 	React.useEffect(() => {
 		localStorage.setItem(
 			nameItemStorage,
-			JSON.stringify((state as FakeAny) || initialState),
+			JSON.stringify((state as FakeAny) || initialState)
 		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [state]);
@@ -72,13 +72,13 @@ const flatten = (array: FakeAny[], childKey: string): FakeAny => {
 		// eslint-disable-next-line default-param-last
 		(res = [], { key, ...rest }) =>
 			res.concat(key).concat(flatten(rest[childKey], childKey)),
-		[],
+		[]
 	);
 };
 
 export function useLoading<TResult, TData>(
 	callback: (data?: TData | undefined) => Promise<TResult>,
-	initialState = false,
+	initialState = false
 ) {
 	const [isLoading, setIsLoading] = useState(initialState);
 
@@ -95,7 +95,7 @@ export function useLoading<TResult, TData>(
 					throw ex;
 				}
 			},
-			[callback],
+			[callback]
 		);
 
 	return { isLoading, load: handleCallback };
