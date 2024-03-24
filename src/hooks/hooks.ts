@@ -82,8 +82,8 @@ export function useLoading<TResult, TData>(
 ) {
 	const [isLoading, setIsLoading] = useState(initialState);
 
-	const handleCallback: (data?: TData | undefined) => Promise<TResult> =
-		useCallback(
+	const handleCallback: (data?: TData | undefined) => Promise<TResult>
+		= useCallback(
 			async (data: TData | undefined) => {
 				try {
 					setIsLoading(true);

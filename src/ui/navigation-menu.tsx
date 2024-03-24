@@ -107,8 +107,8 @@ const NavigationMenuViewport = React.forwardRef<
 		/>
 	</div>
 ));
-NavigationMenuViewport.displayName =
-	NavigationMenuPrimitive.Viewport.displayName;
+NavigationMenuViewport.displayName
+	= NavigationMenuPrimitive.Viewport.displayName;
 
 const NavigationMenuIndicator = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
@@ -126,8 +126,8 @@ const NavigationMenuIndicator = React.forwardRef<
 		<div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-zinc-200 shadow-md dark:bg-zinc-800" />
 	</NavigationMenuPrimitive.Indicator>
 ));
-NavigationMenuIndicator.displayName =
-	NavigationMenuPrimitive.Indicator.displayName;
+NavigationMenuIndicator.displayName
+	= NavigationMenuPrimitive.Indicator.displayName;
 
 export {
 	navigationMenuTriggerStyle,
