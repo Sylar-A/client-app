@@ -108,7 +108,7 @@ export default function ResetPasswordForm() {
 								telegramPrivateChatId: Number(
 									telegramPrivateChatId
 								),
-								link: `${process.env.NEXT_PUBLIC_CLIENT_URL}/api/auth/set-password/`,
+								link: `${process.env.NEXT_PUBLIC_URL}/api/auth/set-password/`,
 								token: token
 							},
 							withCredentials: false

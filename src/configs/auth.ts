@@ -1,7 +1,7 @@
 import { AuthOptions, User } from "next-auth";
 import bcrypt from "bcryptjs";
 import Credentials from "next-auth/providers/credentials";
-import { getClient } from "apollo/apolloClient";
+import { GetApolloClient } from "apollo/apolloClient";
 import { EmployeesQueryDocument } from "components/employees/__generated__/EmployeesQuery";
 import { Employee } from "__generated__/types";
 
@@ -28,7 +28,7 @@ export const AuthConfig: AuthOptions = {
 					return null;
 				}
 
-				const query = await getClient().query({
+				const query = await GetApolloClient(true).getClient().query({
 					query: EmployeesQueryDocument,
 					variables: {
 						where: {
